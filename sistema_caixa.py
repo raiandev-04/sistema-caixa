@@ -13,6 +13,10 @@ def exibir_subtitulo(txt):
             print('-' * len(txt))
 
 
+def listar_produtos(produtos):
+    for numero, produto in enumerate(produtos, start=1):
+        print(f'{numero} - {produto["nome"]}')
+   
 total_cadastrados = 0
 subMaior= unidMaior = 0
 maiorSub = maiorUnid =''
@@ -27,6 +31,7 @@ print(f'Seja bem vindo Sr(a).{nome_cliente}.')
 #Produtos Cadastrados
 
 def cadastrar_produtos(tipos_produtos):
+    
     produtos = []
     total_cadastrados = 0 
 
@@ -56,18 +61,19 @@ while True:
         break
 
     elif menu == 2:
-        for numero, produto in enumerate(produtos, start=1):
-            print(f'{numero} - {produto["nome"]}')
-            
+        exibir_subtitulo('Produtos Cadastrados')
+        listar_produtos(produtos)
         remover = int(input('Digite o número do produto que deseja remover: '))
         produto_removido = produtos.pop(remover - 1)
-        total_cadastrados -= produto['subtotal']
+        total_cadastrados -= produto_removido['subtotal']
         print("-" * 35)
         print(f'{produto_removido["nome"]} foi removido.')
         print("-" * 35)
 
     elif menu == 3:
-        
+        exibir_subtitulo('Produtos Cadastrados')
+        for numero, produto in enumerate(produtos, start=1):
+            print(f'{numero} - {produto["nome"]}')
         print(f'Você cadastrou: {len(produtos)} produtos')
     else:
         exibir_subtitulo('Produtos Cadastrados')
