@@ -25,20 +25,23 @@ produto = {}
 print(f'Seja bem vindo Sr(a).{nome_cliente}.')
 
 #Produtos Cadastrados
+
+def cadastrar_produtos(tipos_produtos):
+    produtos = []
+    total_cadastrados = 0 
+
+    for contador_produtos in range(tipos_produtos):#Estrutura repitção for pra cada contagem de produtos
+        produto = {}
+        produto['nome']= input("Informe o nome do produto: ")
+        produto['preço'] = float(input("Informe o preço do produto: R$ "))
+        produto['quantidade'] = int(input("Informe a quantidade do produto: "))
+        produto['subtotal'] = produto['preço'] * produto['quantidade']
+        total_cadastrados += produto['subtotal']
+        produtos.append(produto)# O Dicionario é adicionada à lista de produtos
+    return produtos, total_cadastrados
+
 tipos_produtos = int(input('Quantos produtos diferentes serão cadastrados? '))
-
-#Estrutura repitção for pra cada contagem de produtos
-
-for contador_produtos in range(tipos_produtos):
-
-    produto['nome']= input("Informe o nome do produto: ")
-    produto['preço'] = float(input("Informe o preço do produto: R$ "))
-    produto['quantidade'] = int(input("Informe a quantidade do produto: "))
-    produto['subtotal'] = produto['preço'] * produto['quantidade']
-    total_cadastrados += produto['subtotal']
-
-    # O Dicionario é adicionada à lista de produtos
-    produtos.append(produto.copy())
+produtos, total_cadastrados = cadastrar_produtos(tipos_produtos)
 
 #Laço de repetição que permite o usuario escolha uma condição verdadeira
 while True:
